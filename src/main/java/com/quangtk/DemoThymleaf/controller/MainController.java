@@ -39,7 +39,7 @@ public class MainController {
 	@GetMapping("/personList")
 	public String personList(Model model) {
 
-		model.addAttribute("person", persons);
+		model.addAttribute("persons", persons);
 		return Constant.TEMPLATE_PERSON_LIST;
 	}
 
