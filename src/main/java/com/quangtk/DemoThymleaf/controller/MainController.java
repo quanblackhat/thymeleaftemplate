@@ -39,7 +39,7 @@ public class MainController {
 	@GetMapping("/personList")
 	public String personList(Model model) {
 
-		model.addAttribute("persons", persons);
+		model.addAttribute("person", persons);
 		return Constant.TEMPLATE_PERSON_LIST;
 	}
 
@@ -62,5 +62,10 @@ public class MainController {
 		}
 		model.addAttribute("errorMessage", errorMessage);
 		return Constant.TEMPLATE_ADD_PERSON;
+	}
+
+	@GetMapping("/about")
+	public String about(Model model){
+		return "about";
 	}
 }
