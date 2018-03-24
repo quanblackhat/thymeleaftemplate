@@ -7,10 +7,7 @@ import com.quangtk.DemoThymleaf.model.Person;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +19,9 @@ public class MainController {
 	static {
 		persons.add(new Person("Bill", "Gates"));
 		persons.add(new Person("Steve", "Jobs"));
+		persons.add(new Person("Nam", "Jo"));
+		persons.add(new Person("Steve", "Ills"));
+		persons.add(new Person("Lovren", "Jobs"));
 	}
 
 	@Value("${welcome.message}")
@@ -30,31 +30,31 @@ public class MainController {
 	@Value("${error.message}")
 	private String errorMessage;
 
-	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+	@GetMapping("/index")
 	public String index(Model model) {
 		model.addAttribute("message", message);
 		return Constant.TEMPLATE_INDEX;
 	}
 
-	@RequestMapping(value = { "/personList" }, method = RequestMethod.GET)
+	@GetMapping("/personList")
 	public String personList(Model model) {
 
 		model.addAttribute("persons", persons);
 		return Constant.TEMPLATE_PERSON_LIST;
 	}
 
-	@RequestMapping(value = { "/addPerson" }, method = RequestMethod.GET)
+	@GetMapping("/addPerson")
 	public String showAddPersonPage(Model model) {
 		PersonForm personForm = new PersonForm();
 		model.addAttribute("personForm", personForm);
 		return Constant.TEMPLATE_ADD_PERSON;
 	}
 
-	@RequestMapping(value = { "/addPerson" }, method = RequestMethod.POST)
+	@PostMapping("/addPerson")
 	public String savePerson(Model model, @ModelAttribute("personForm") PersonForm personForm) {
 		String firstName = personForm.getFirstName();
 		String lastName = personForm.getLastName();
-		if (firstName != null && firstName.length() > 0 //
+		if (firstName != null && firstName.length() > 0
 				&& lastName != null && lastName.length() > 0) {
 			Person newPerson = new Person(firstName, lastName);
 			persons.add(newPerson);
@@ -63,11 +63,4 @@ public class MainController {
 		model.addAttribute("errorMessage", errorMessage);
 		return Constant.TEMPLATE_ADD_PERSON;
 	}
-
-	@GetMapping("/newFeature")
-	public String test(Model model) {
-		model.addAttribute("msg", "This is new feature");
-		return "newFeature";
-	}
-
 }
