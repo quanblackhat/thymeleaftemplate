@@ -77,7 +77,12 @@ public class MainController {
     }
 
     @GetMapping("/todo-list")
-    private String abc(Model model) {
+    private String todoList(Model model) {
         return "todoList";
+    }
+
+    @GetMapping("/inbox")
+    private String inbox(Model model) {
+        return "inbox";
     }
 }
