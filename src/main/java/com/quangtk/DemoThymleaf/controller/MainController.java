@@ -75,4 +75,9 @@ public class MainController {
     private String gallery(Model model) {
         return "gallery";
     }
+
+    @GetMapping("/todo-list")
+    private String abc(Model model) {
+        return "todoList";
+    }
 }
