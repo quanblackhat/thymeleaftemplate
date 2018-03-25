@@ -4,12 +4,13 @@ package com.quangtk.DemoThymleaf.controller;
 import com.quangtk.DemoThymleaf.Constant;
 import com.quangtk.DemoThymleaf.form.PersonForm;
 import com.quangtk.DemoThymleaf.model.Person;
+import com.quangtk.DemoThymleaf.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -30,9 +31,21 @@ public class MainController {
 	@Value("${error.message}")
 	private String errorMessage;
 
-	@GetMapping("/index")
+    @GetMapping({"/", "/index"})
 	public String index(Model model) {
-		model.addAttribute("message", message);
+        ArrayList<String> months = new ArrayList<>(
+                Arrays.asList("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL","AUG", "SEP", "OCT", "NOV", "DEC"));
+        Map<String, Integer> earningsMap = new HashMap<>();
+        months.forEach(month -> {
+            double randNumber = Math.random();
+            double temp = randNumber * 100;
+            int randomInt = (int) temp + 1;
+            earningsMap.put(month, randomInt);
+        });
+
+        User user = new User(1, "Ngoc Trinh", 12, 2, 34, 45);
+        model.addAttribute("user", user);
+        model.addAttribute("earningsMap", earningsMap);
 		return Constant.TEMPLATE_INDEX;
 	}
 
@@ -64,8 +77,8 @@ public class MainController {
 		return Constant.TEMPLATE_ADD_PERSON;
 	}
 
-	@GetMapping("/about")
-	public String about(Model model){
-		return "about";
+	@GetMapping("/login")
+	public String login(Model model){
+		return "login";
 	}
 }
