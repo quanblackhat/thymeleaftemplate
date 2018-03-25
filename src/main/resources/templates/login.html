@@ -8,10 +8,8 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <title>Login Page</title>
 
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap-reset.css}"/>
-    <!--external css-->
     <link rel="stylesheet" type="text/css" th:href="@{css/font-awesome.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{css/style.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{css/style-responsive.css}"/>
@@ -44,12 +42,12 @@
                     Twitter
                 </a>
             </div>
-            <!--<div class="registration">-->
-                <!--Don't have an account yet?-->
-                <!--<a class="" href="registration.html">-->
-                    <!--Create an account-->
-                <!--</a>-->
-            <!--</div>-->
+            <div class="registration">
+                Don't have an account yet?
+                <a class="" th:href="@{/registration}">
+                    Create an account
+                </a>
+            </div>
 
         </div>
           <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">

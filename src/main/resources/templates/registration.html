@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>Registration</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap-reset.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/style.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/style-responsive.css}"/>
+    <script type="text/javascript" th:src="@{/js/html5shiv.js}"></script>
+    <script type="text/javascript" th:src="@{/js/respond.min.js}"></script>
+</head>
+
+  <body class="login-body">
+
+    <div class="container">
+      <form class="form-signin" action="#" th:action="@{/addProfile}" th:object="${profileForm}" method="POST">
+        <h2 class="form-signin-heading">registration now</h2>
+        <div class="login-wrap">
+            <p>Enter your personal details below</p>
+            <input type="text" class="form-control" placeholder="First Name" th:field="*{firstName}" autofocus/>
+            <input type="text" class="form-control" placeholder="Last Name" th:field="*{lastName}" autofocus/>
+            <input type="text" class="form-control" placeholder="Email" th:field="*{email}" autofocus/>
+            <input type="text" class="form-control" placeholder="Country" th:field="*{country}" autofocus/>
+            <input type="text" class="form-control" placeholder="User Name" th:field="*{username}" autofocus/>
+            <input type="password" class="form-control" placeholder="Password" th:field="*{password}" />
+            <input type="password" class="form-control" placeholder="Re-type Password"/>
+            <button class="btn btn-lg btn-login btn-block" type="submit">Submit</button>
+
+            <div class="registration">
+                Already Registered.
+                <a class="" th:href="@{/login}">
+                    Login
+                </a>
+            </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+  </body>
+</html>
